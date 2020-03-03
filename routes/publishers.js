@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 const mongo = require('mongodb').MongoClient
-const url = process.env.MONGO_URI
+const url = process.env.MONGO_CRED+process.env.MONGO_URI
 var db;
 
 mongo.connect(
