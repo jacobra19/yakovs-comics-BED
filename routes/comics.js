@@ -55,4 +55,23 @@ router.get('/publishers/:value', (req, res)=> {
     })
 });
 
+router.post('/new/', function(req, res) {
+    console.log('post')
+    let test = JSON.stringify(req.body,null,4)
+    console.log('test', test)
+    // const collection = db.collection('comics')
+
+    // collection
+    // .find({})
+    // .toArray()
+    // .then((arr)=>{
+    //     // console.log('arr.length', arr.length)
+        res.send('test is good')
+    // })
+    // .catch((err)=>{
+    //     // console.log('err', err)
+    //     res.send([])
+    // })
+});
+
 module.exports = router;
