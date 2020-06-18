@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var comicsRouter = require('./routes/comics');
+var comicsRouter = require('./routes/comicsMongoose');
 var publishersRouter = require('./routes/publishers');
 
 var app = express();
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/comics', comicsRouter);
+app.use('/comicsMongoose', comicsMongooseRouter);
 app.use('/publishers', publishersRouter);
 
 // catch 404 and forward to error handler
