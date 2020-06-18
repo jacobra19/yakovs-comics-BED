@@ -56,10 +56,15 @@ router.get('/publishers/:value', (req, res)=> {
 });
 
 router.post('/new/', function(req, res) {
+    const collection = db.collection('comicsGlobalPool')
+
     console.log('post')
+    console.log('typeof req.body.entries', typeof req.body.entries)
+    console.log('req.body', req.body)
     let test = JSON.stringify(req.body,null,4)
-    console.log('test', test)
-    // const collection = db.collection('comics')
+    console.log('typeof test',typeof test)
+
+    collection.insertMany(req.body.entries)
 
     // collection
     // .find({})
