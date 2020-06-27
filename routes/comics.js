@@ -10,7 +10,7 @@ var db;
 // var dbComicsGlobalPool;
 
 mongo.connect(
-    url, 
+    writeUrl, 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -61,7 +61,7 @@ router.get('/publishers/:value', (req, res)=> {
 });
 
 router.post('/new/', function(req, res) {
-    // const collection = db.collection('comicsGlobalPool')
+    const collection = db.collection('testCollection')
 
     // console.log('post')
     // console.log('typeof req.body.entries', typeof req.body.entries)
@@ -69,9 +69,12 @@ router.post('/new/', function(req, res) {
     // let test = JSON.stringify(req.body,null,4)
     // console.log('typeof test',typeof test)
     console.log('req.body.entries',req.body.entries)
+    let insertManyRes = collection.insertMany(req.body.entries)
+    // console.log('insertManyRes', insertManyRes)
 
-    // collection.insertMany(req.body.entries)
-
+    insertManyRes.then(promRes=>{
+        console.log('promRes', promRes)
+    })
     // collection
     // .find({})
     // .toArray()
