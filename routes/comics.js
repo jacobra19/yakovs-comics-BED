@@ -5,7 +5,9 @@ var router = express.Router();
 
 const mongo = require('mongodb').MongoClient
 const url = process.env.MONGO_CRED+process.env.MONGO_URI
+const writeUrl = process.env.MONGO_ADMIN+process.env.MONGO_URI
 var db;
+// var dbComicsGlobalPool;
 
 mongo.connect(
     url, 
@@ -18,6 +20,9 @@ mongo.connect(
         console.error(err)
         return
     }
+    console.log('mongo.connect')
+    console.log('url', url)
+    console.log('writeUrl', writeUrl)
     db = client.db('yakovs-comics')
     }
 )
@@ -56,15 +61,16 @@ router.get('/publishers/:value', (req, res)=> {
 });
 
 router.post('/new/', function(req, res) {
-    const collection = db.collection('comicsGlobalPool')
+    // const collection = db.collection('comicsGlobalPool')
 
-    console.log('post')
-    console.log('typeof req.body.entries', typeof req.body.entries)
-    console.log('req.body', req.body)
-    let test = JSON.stringify(req.body,null,4)
-    console.log('typeof test',typeof test)
+    // console.log('post')
+    // console.log('typeof req.body.entries', typeof req.body.entries)
+    // console.log('req.body', req.body)
+    // let test = JSON.stringify(req.body,null,4)
+    // console.log('typeof test',typeof test)
+    console.log('req.body.entries',req.body.entries)
 
-    collection.insertMany(req.body.entries)
+    // collection.insertMany(req.body.entries)
 
     // collection
     // .find({})
