@@ -4,6 +4,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser= require('body-parser')
 
 var indexRouter = require('./routes/index');
 var comicsRouter = require('./routes/comics');
@@ -13,6 +14,7 @@ var publishersRouter = require('./routes/publishers');
 var allowCrossDomain = require('./middlewares/allowCrossDomain')
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(allowCrossDomain);
 
